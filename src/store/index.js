@@ -3,12 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const savedLists = localStorage.getItem('trello-lists') // ★①追加
+const savedLists = localStorage.getItem('trello-lists')
 
 
-const store = new Vuex.Store({ // ★②編集
+const store = new Vuex.Store({
   state: {
-    // ★ここから③編集
     lists: savedLists ? JSON.parse(savedLists) : [{
         title: 'Backlog',
         cards: [{
