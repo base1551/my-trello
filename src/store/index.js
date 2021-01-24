@@ -30,6 +30,7 @@ const store = new Vuex.Store({
             }
         ],
     },
+    // stateに渡す
     mutations: {
         addlist(state, payload) {
             state.lists.push({
@@ -39,17 +40,26 @@ const store = new Vuex.Store({
         },
         removelist(state, payload) {
             state.lists.splice(payload.listIndex, 1)
-        }
+        },
+        addCardToList(state, payload) {
+            state.lists[payload.listIndex].cards.push({body: payload.body})
+        },
     },
-    //mutationsで作成したメソッドをcommitで実行
+//mutationsで作成したメソッドをcommitで実行
     actions: {
         addlist(context, payload) {
             context.commit('addlist', payload)
-        },
+        }
+        ,
         removelist(context, payload) {
             context.commit('removelist', payload)
         }
-    },
+        ,
+        addCardToList(context, payload) {
+            context.commit('addCardToList', payload)
+        }
+    }
+    ,
     getters: {}
 })
 

@@ -4,12 +4,15 @@
       <p class="list-title">{{ title }}</p>
       <!-- クリックイベント-->
       <div class="deletelist" @click="removeList">×</div>
+      <card-add :list-index="listIndex"></card-add>
     </div>
   </div>
 </template>
 
 <script>
+import CardAdd from "@/components/CardAdd";
 export default {
+  components: {CardAdd},
   //親コンポーネントからデータを受け取りdataとして利用できる
   //type stringで受け取る
   //required 必ず受け取る
