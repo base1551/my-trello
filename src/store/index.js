@@ -66,7 +66,13 @@ const store = new Vuex.Store({
         }
     }
     ,
-    getters: {}
+    getters: {
+        totalCardCount(state) {
+            let count = 0
+            state.lists.map(content => count += content.cards.length)
+            return count
+        },
+    },
 })
 
 // ★ここから追記
