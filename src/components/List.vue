@@ -2,23 +2,34 @@
   <div class="list">
     <div class="listheader">
       <p class="list-title">{{ title }}</p>
-      <!-- クリックイベント-->
       <div class="deletelist" @click="removeList">×</div>
-      <card-add :list-index="listIndex"></card-add>
     </div>
+    <card v-for="(item, index) in cards"
+          :body="item.body"
+          :key="item.id"
+          :cardIndex="index"
+          :listIndex="listIndex"
+    />
+    <card-add :listIndex="listIndex"/>
   </div>
 </template>
 
 <script>
-import CardAdd from "@/components/CardAdd";
+import CardAdd from "./CardAdd";
+import Card from "./Card";
+
 export default {
-  components: {CardAdd},
+  components: {Card, CardAdd},
   //親コンポーネントからデータを受け取りdataとして利用できる
   //type stringで受け取る
   //required 必ず受け取る
   props: {
     title: {
       type: String,
+      required: true
+    },
+    cards: {
+      type: Array,
       required: true
     },
     listIndex: {

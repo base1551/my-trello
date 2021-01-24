@@ -44,6 +44,9 @@ const store = new Vuex.Store({
         addCardToList(state, payload) {
             state.lists[payload.listIndex].cards.push({body: payload.body})
         },
+        removeCardFromList(state, payload) {
+            state.lists[payload.listIndex].cards.splice(payload.cardIndex, 1)
+        }
     },
 //mutationsで作成したメソッドをcommitで実行
     actions: {
@@ -57,6 +60,9 @@ const store = new Vuex.Store({
         ,
         addCardToList(context, payload) {
             context.commit('addCardToList', payload)
+        },
+        removeCardFromList(context, payload) {
+            context.commit('removeCardFromList', payload)
         }
     }
     ,
